@@ -1,0 +1,62 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "webAppName": {
+        "type": "string",
+        "metadata": {
+          "description": "Web app name."
+        }
+      },
+     "location": {
+       "type": "string",
+        "metadata": {
+          "description": "Location for all resources."
+        }
+      },
+      "sku": {
+        "type": "string",
+        "metadata": {
+          "description": "The SKU of App Service Plan."
+        }
+      },
+      "language": {
+        "type": "string",
+        "defaultValue": ".net",
+        "allowedValues": [
+          ".net",
+          "php",
+          "node",
+          "html"
+        ],
+        "metadata": {
+          "description": "The language stack of the app."
+        }
+      }  
+    },
+    "variables":{},
+    "resources": [
+      {
+        "type": "Microsoft.Web/serverfarms",
+        "apiVersion": "2020-06-01",
+        "name": "[parameters('webAppName')]",
+        "location": "[parameters('location')]",
+        "sku": {
+          "name": "[parameters('sku')]"
+        }
+      },
+      {
+        "type": "Microsoft.Web/sites",
+        "apiVersion": "2020-06-01",
+        "name": "[parameters('webAppName')]",
+        "location": "[parameters('location')]",
+        "dependsOn": [
+          "[resourceId('Microsoft.Web/serverfarms', parameters('webAppName'))]"
+        ],
+        "properties": {
+          "siteConfig": "[parameters('language')]",
+          "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('webAppName'))]"
+        }
+      }
+    ]
+  }
