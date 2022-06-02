@@ -6,7 +6,7 @@
         "value": "arm-web"
       },
       "location": {
-          "value": "centralus"
+          "value": "EastUS"
       },
       "sku": {
           "value": "F1"
