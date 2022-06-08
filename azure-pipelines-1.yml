@@ -14,11 +14,11 @@ steps:
 - task: Npm@1
   inputs:
     command: 'install'
-    workingDir: '/azureithub'
+    workingDir: 'azureithub'
 - task: Npm@1
   inputs:
     command: 'custom'
-    workingDir: '/azureithub'
+    workingDir: 'azureithub'
     customCommand: 'run build'
 - task: PublishBuildArtifacts@1
   inputs:
