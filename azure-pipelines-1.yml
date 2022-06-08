@@ -6,11 +6,8 @@ pool:
   vmImage: windows-2019
 variables: 
  - group: new-test-var
- - name: WebAppName
-   value: $[variables.asifwebapp]
-
 steps:
-- script: echo $(asifwebapp) # uses macro syntax
+#- script: echo $(asifwebapp) # uses macro syntax
 - script: echo $(WebAppName)
 
 - task: AzureResourceManagerTemplateDeployment@3
