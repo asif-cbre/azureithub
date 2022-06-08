@@ -22,6 +22,6 @@ steps:
     resourceGroupName: 'new-var-rg'
     location: 'Central US'
     templateLocation: 'Linked artifact'
-    csmFile: 'azuredeploy.json'
-    csmParametersFile: 'azuredeploy.parameters.json'
+    csmFile: 'Practice-ARM/azuredeploy.json'
+    csmParametersFile: 'Practice-ARM/azuredeploy.parameters.json'
     deploymentMode: 'Incremental'
