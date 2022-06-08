@@ -1,26 +1,31 @@
-resources:
- repositories:
-   - repository: self
-     type: git
-     ref: main
-trigger:
-- master
-
 pool:
-  vmImage: ubuntu-latest
+  name: Azure Pipelines
+  demands: npm
+variables: 
+ - group: new-test-var
+ - name: "WebAppName"
+   value: $[variable.WebAppName]
+
 
 steps:
+- script: echo $("WebAppName") # uses macro syntax
+- script: echo $("WebAppName")
 - task: Npm@1
+  displayName: 'npm install'
   inputs:
-    command: 'install'
-    workingDir: 'asif-cbre\azureithub'
+    workingDir: Mypracticeone
+    verbose: false
+
 - task: Npm@1
+  displayName: 'npm custom'
   inputs:
-    command: 'custom'
-    workingDir: 'asif-cbre\azureithub'
+    command: custom
+    workingDir: Mypracticeone
+    verbose: false
     customCommand: 'run build'
+
 - task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
   inputs:
-    PathtoPublish: 'build'
-    ArtifactName: 'drop'
+    PathtoPublish: build
     publishLocation: 'Container'
