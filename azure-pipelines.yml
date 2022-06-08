@@ -13,11 +13,11 @@ steps:
 - task: Npm@1
   inputs:
     command: 'install'
-    workingDir: '**\mypracticeone'
+    workingDir: 'asif-cbre\azureithub'
 - task: Npm@1
   inputs:
     command: 'custom'
-    workingDir: '**\Mypracticeone'
+    workingDir: 'asif-cbre\azureithub'
     customCommand: 'run build'
 - task: PublishBuildArtifacts@1
   inputs:
