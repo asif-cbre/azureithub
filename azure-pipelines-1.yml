@@ -1,0 +1,22 @@
+resources:
+ repositories:
+  - repository: self
+    type: git
+    ref: main
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: Npm@1
+  inputs:
+    command: 'install'
+    workingDir: '/azureithub'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: 'build'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
