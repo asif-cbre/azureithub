@@ -21,4 +21,5 @@ steps:
     templateLocation: 'Linked artifact'
     csmFile: 'Practice-ARM/azuredeploy.json'
     csmParametersFile: 'Practice-ARM/azuredeploy.parameters.json'
+    overrideParameters: -webAppName "$(WebAppName)" -location "EastUS" -sku "F1" -language ".net"
     deploymentMode: 'Incremental'
