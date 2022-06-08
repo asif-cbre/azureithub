@@ -3,7 +3,7 @@ pool:
   demands: npm
 variables: 
  - group: new-test-var
- - name: "WebAppName"
+ - name: WebAppName
    value: $[variable.WebAppName]
 
 
