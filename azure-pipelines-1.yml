@@ -9,6 +9,7 @@ variables:
 steps:
 #- script: echo $(asifwebapp) # uses macro syntax
 - script: echo $(WebAppName)
+- script: echo $(location)
 - task: AzureResourceManagerTemplateDeployment@3
   inputs:
     deploymentScope: 'Resource Group'
@@ -16,9 +17,9 @@ steps:
     subscriptionId: '19696416-07b9-4753-80aa-43befeb1ed6f'
     action: 'Create Or Update Resource Group'
     resourceGroupName: 'new-var'
-    location: 'Australia East'
+    location: 'Central US'
     templateLocation: 'Linked artifact'
     csmFile: 'Practice-ARM/azuredeploy.json'
     csmParametersFile: 'Practice-ARM/azuredeploy.parameters.json'
-    overrideParameters: 'overrideParameters: -webAppName "$(WebAppName)" -location "$(location)" -sku "F1" -language ".net"'
+    overrideParameters: '-webAppName "$(WebAppName)" -location "Central US" -sku "F1" -language ".net"'
     deploymentMode: 'Incremental'
